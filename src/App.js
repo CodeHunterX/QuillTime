@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './constants/colors.css';
+import NavBar from './components/NavBar';
+import MainLayout from './components/MainLayout';
+import { AuthProvider } from './services/AuthContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  try {
+    return (
+      <AuthProvider>
+        <div className="app-shell">
+          <NavBar />
+          <MainLayout />
+        </div>
+      </AuthProvider>
+
+    );
+  } catch (error) {
+    console.error("App crashed:", error);
+    return <div>Error rendering app.</div>;
+  }  
 }
 
 export default App;

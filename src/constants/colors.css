@@ -1,0 +1,25 @@
+:root {
+    /* Brand & Interface Colors */
+    --color-indigo: #5C6BC0;
+    --color-deep-blue: #3949AB;
+    --color-sky-blue: #90CAF9;
+    --color-steel-blue: #4A6572;
+    --color-slate-gray: #B0BEC5;
+    --color-lavender: #B39DDB;
+    --color-soft-purple: #9575CD;
+  
+    /* Backgrounds & Text */
+    --color-background-light: #F4F6F8;
+    --color-text-dark: #2E3A59;
+    --color-text-light: #FFFFFF;
+  
+    /* Borders & Muted UI */
+    --color-border-gray: #DDDDDD;
+    --color-muted-gray: #AAAAAA;
+  
+    /* Feedback (optional) */
+    --color-success: #66BB6A;
+    --color-warning: #FFA726;
+    --color-error: #EF5350;
+  }
+  
