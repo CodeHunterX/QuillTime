@@ -1,0 +1,11 @@
+.word-count-box {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-dark, #2E3A59);
+    background-color: var(--color-background-light, #F4F6F8);
+    border-bottom: 1px solid var(--color-border-gray, #DDD);
+    text-align: center;
+  }
+  
+  

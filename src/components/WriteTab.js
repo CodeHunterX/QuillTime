@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../services/AuthContext';
 import './WriteTab.css';
 
-const WriteTab = () => {
+const WriteTab = ({ onSelectFile }) => {
   const { accessToken } = useAuth();
   const pickerInitialized = useRef(false);
   const [iframeUrl, setIframeUrl] = useState('');
@@ -53,6 +53,7 @@ const WriteTab = () => {
     if (data.action === window.google.picker.Action.PICKED) {
       const pickedDoc = data[window.google.picker.Response.DOCUMENTS][0];
       const fileId = pickedDoc[window.google.picker.Document.ID];
+      onSelectFile?.(fileId);
       const previewUrl = `https://docs.google.com/document/d/${fileId}/edit`;
 
       try {
