@@ -56,3 +56,8 @@
   background: rgba(255,255,255,0.2);
   border-color: #fff;
 }
+
+.nav-logo {
+  height: 36px;           /* consistent with nav height */
+  object-fit: contain;
+}

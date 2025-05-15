@@ -12,6 +12,7 @@
     width: min(90%, 420px);
     padding: 3.5rem 2.5rem;
     text-align: center;
+    align-items: center;
     backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -54,4 +55,10 @@
   .google-btn svg {
     flex-shrink: 0;
   }
-  
+
+  .logo-image {
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1.5rem auto;   /* center horizontally, add bottom spacing */
+  }

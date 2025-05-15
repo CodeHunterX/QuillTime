@@ -8,7 +8,11 @@ const NavBar = () => {
   return (
     <nav className="nav-bar">
       <div className="brand">
-        📝 QuillTime
+      <img
+        src="/QuillTime_Logo.png"
+        alt="QuillTime Logo"
+        className="nav-logo"
+      /><span>QuillTime</span>
       </div>
 
       {/* auth section, right‑aligned */}

@@ -16,8 +16,11 @@ const LandingPage = () => {
   return (
     <div className="landing-wrapper">
       <div className="glass-card">
-        {/* 👉 replace ⬇︎ with your final logo when you have it */}
-        <h1 className="brand">📝 QuillTime</h1>
+      <img
+  src="/QuillTime_transparent.png"
+  alt="QuillTime Logo"
+  className="logo-image"
+/>
 
         <p className="tagline">A focused place to craft your best words.</p>
 
