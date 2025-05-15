@@ -1,13 +1,11 @@
 .timer-tab {
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
     background-color: var(--color-background-light, #F4F6F8);
     color: var(--color-text-dark, #2E3A59);
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    gap: 1rem;
     font-family: 'Segoe UI', sans-serif;
   }
   

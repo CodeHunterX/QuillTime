@@ -1,44 +1,58 @@
+/* Keep existing layout rules … */
+
+/* 1. Replace the plain background with the same diagonal gradient */
 .nav-bar {
-    height: 7%;
-    padding: 0 1.5rem;
-    background-color: var(--color-background-light, #F4F6F8);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--color-slate-gray, #B0BEC5);
-  }
-  
-  .logo {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--color-text-dark, #2E3A59);
-  }
-  
-  .auth-section {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  
-  .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .auth-button {
-    background-color: var(--color-indigo, #5C6BC0);
-    color: var(--color-text-light, #FFFFFF);
-    border: none;
-    border-radius: 6px;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-  }
-  
-  .auth-button:hover {
-    background-color: var(--color-deep-blue, #3949AB);
-  }
-  
+  height: 7.5vh;
+  min-height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+
+  /* 🔵🟣 Gradient identical to LandingPage */
+  background: linear-gradient(135deg, #6b80ff 0%, #a66bff 100%);
+
+  /* Optional subtle border / shadow removal */
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);   /* soft—remove if undesired */
+}
+
+/* 2. Make brand/logo and buttons readable on the gradient */
+.brand {
+  color: #fff;            /* white text */
+}
+
+/* --- avatar + logout container --- */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;        /* space between avatar & button */
+  margin-right: 1rem;  /* pull away from right edge */
+}
+
+/* avatar image */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff; /* crisp ring */
+}
+
+/* logout button */
+.auth-btn {
+  padding: 0.4rem 1rem;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: background 0.15s ease, border 0.15s ease;
+}
+.auth-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: #fff;
+}

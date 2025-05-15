@@ -9,6 +9,7 @@ import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $getRoot, $createParagraphNode, $createTextNode } from 'lexical';
 import { loadDocContent, saveDocContent } from '../services/googleDocSync';
+import './EditorTab.css';
 
 const theme = {
   paragraph: 'editor-paragraph',

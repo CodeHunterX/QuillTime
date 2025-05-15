@@ -45,7 +45,7 @@ const SocialTab = () => {
 
   return (
     <div className="social-tab">
-      <h3>Community Chat</h3>
+      <h3>Quill Chat</h3>
       <div className="messages-container">
         {messages.map((msg) => (
           <div key={msg.id} className="message">

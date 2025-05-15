@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { $getRoot } from 'lexical';
+import './WordCountDisplay.css';
 
 const WordCountDisplay = ({ isSaving, lastSavedTime }) => {
     const [wordCount, setWordCount] = useState(0);

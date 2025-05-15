@@ -1,83 +1,68 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
   const [accessToken, setAccessToken] = useState(null);
+  const [user, setUser] = useState(null);
   const [gisReady, setGisReady] = useState(false);
 
-  // Load GIS script on first mount
+  /* ▸ Load Google Identity Services script ONCE */
   useEffect(() => {
     if (window.google?.accounts) {
       setGisReady(true);
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://accounts.google.com/gsi/client';
-      script.async = true;
-      script.defer = true;
-      script.onload = () => setGisReady(true);
-      document.body.appendChild(script);
+      return;
     }
 
-    // Try restoring session from localStorage
-    const storedUser = localStorage.getItem('user');
-    const storedToken = localStorage.getItem('accessToken');
-    if (storedUser && storedToken) {
-      setUser(JSON.parse(storedUser));
-      setAccessToken(storedToken);
-    }
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => setGisReady(true);
+    document.body.appendChild(script);
   }, []);
 
+  /* ▸ Login handler */
   const login = () => {
-    if (!gisReady || !window.google?.accounts?.oauth2) {
-      console.error('Google Identity Services not ready.');
+    if (!gisReady) {
+      console.error('GIS not ready yet');
       return;
     }
 
     const tokenClient = window.google.accounts.oauth2.initTokenClient({
       client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-      scope: 'openid email profile https://www.googleapis.com/auth/drive.metadata.readonly',
-      callback: (response) => {
-        if (response.error) {
-          console.error('Login failed', response);
+      scope: 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/documents https://www.googleapis.com/auth/drive.metadata.readonly openid email profile',
+      callback: async (resp) => {
+        if (resp.error) {
+          console.error('[Auth] Token error', resp);
           return;
         }
 
-        const token = response.access_token;
-        setAccessToken(token);
-        localStorage.setItem('accessToken', token);
+        setAccessToken(resp.access_token);
 
-        // Fetch user profile
-        fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            const userInfo = {
-              name: data.name,
-              email: data.email,
-              photoURL: data.picture,
-            };
-            setUser(userInfo);
-            localStorage.setItem('user', JSON.stringify(userInfo));
-          })
-          .catch((err) => {
-            console.error('Failed to fetch user info', err);
-          });
+        // optional: fetch profile for avatar/name
+        const infoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: { Authorization: `Bearer ${resp.access_token}` },
+        });
+        const profile = await infoRes.json();
+        setUser({
+          name: profile.name,
+          photoURL: profile.picture,
+          email: profile.email,
+        });
       },
     });
 
     tokenClient.requestAccessToken({ prompt: 'consent' });
   };
 
+  /* ▸ Logout handler */
   const logout = () => {
-    setUser(null);
+    if (accessToken) {
+      window.google.accounts.oauth2.revoke(accessToken);
+    }
     setAccessToken(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('accessToken');
+    setUser(null);
   };
 
   return (

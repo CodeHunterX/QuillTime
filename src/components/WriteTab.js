@@ -99,7 +99,7 @@ const WriteTab = ({ onSelectFile }) => {
             title="Google Doc"
             src={iframeUrl}
             width="100%"
-            height="100%"
+            height="90%"
             style={{ border: 'none' }}
           />
         ) : (
