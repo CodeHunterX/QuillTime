@@ -5,7 +5,7 @@ import SocialTab from './SocialTab';
 import NavBar from './NavBar';
 import WordCountDisplay from './WordCountDisplay';
 
-const MainLayout = ({ accessToken }) => {
+const MainLayout = ({ accessToken, onPrivacyClick }) => {
   const [fileId, setFileId] = useState(null);
 
   const handleChooseDoc = () => {
@@ -36,7 +36,7 @@ const MainLayout = ({ accessToken }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       {/* Top Nav */}
-      <NavBar />
+      <NavBar onPrivacyClick={onPrivacyClick} />
 
       {/* Main Panels */}
       <div style={{ display: 'flex', height: '92.5%' }}>

@@ -11,23 +11,31 @@ const GoogleIcon = () => (
     <path fill="#ea4335" d="M272 107.7c37.4 0 71 12.9 97.5 38.3l73-73c-49-45.7-112.3-72.4-170.5-72.4-100.9 0-189.7 53.2-236.9 138.4l88.5 68.6C144.7 154.2 203.1 107.7 272 107.7z"/>
   </svg>
 );
-const LandingPage = () => {
-  const { login } = useAuth();
+const LandingPage = ({ onPrivacyClick }) => {
+    const { login } = useAuth();
   return (
     <div className="landing-wrapper">
       <div className="glass-card">
       <img
-  src="/QuillTime_transparent.png"
-  alt="QuillTime Logo"
-  className="logo-image"
-/>
+        src="/QuillTime_transparent.png"
+        alt="QuillTime Logo"
+        className="logo-image"
+        />
 
         <p className="tagline">A focused place to craft your best words.</p>
-
+        <div className="button-group">
+        <div className="button-row">
         <button className="google-btn" onClick={login}>
           <GoogleIcon />
           <span>Sign in with Google</span>
         </button>
+        </div>
+        <div className="button-row">
+            <button className="auth-btn secondary" onClick={onPrivacyClick}>
+            Privacy Policy
+            </button>
+        </div>
+        </div>
       </div>
     </div>
   );
