@@ -1,8 +1,11 @@
 import React from 'react';
 import './TermsOfService.css';
+import NavBar from '../components/NavBar';
 
 const TermsOfService = () => {
   return (
+    <>
+    <NavBar />
     <div className="privacy-container">
       <h1>Terms of Service</h1>
       <p>Last updated: [Insert Date]</p>
@@ -40,6 +43,7 @@ const TermsOfService = () => {
 
       <p>If you have any questions, contact us at <a href="mailto:authormichaelreynolds@gmail.com">authormichaelreynolds@gmail.com</a>.</p>
     </div>
+    </> 
   );
 };
 
