@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../services/AuthContext';
+import { Link } from 'react-router-dom';
 import './LandingPage.css';          // styles just for the splash
 
 // ⬇︎ Google icon as an inline SVG so we don’t load extra assets
@@ -30,12 +31,10 @@ const LandingPage = ({ onPrivacyClick }) => {
           <span>Sign in with Google</span>
         </button>
         </div>
-        <div className="button-row">
-            <button className="auth-btn secondary" onClick={onPrivacyClick}>
-            Privacy Policy
-            </button>
         </div>
-        </div>
+        <p className="footer-links">
+            <Link to="/privacy">Privacy Policy</Link> · <Link to="/terms">Terms of Service</Link>
+        </p>
       </div>
     </div>
   );

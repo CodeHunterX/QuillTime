@@ -62,3 +62,15 @@
     display: block;
     margin: 0 auto 1.5rem auto;   /* center horizontally, add bottom spacing */
   }
+
+  .footer-links {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #ccc;
+    text-align: center;
+  }
+  .footer-links a {
+    color: #ddd;
+    text-decoration: underline;
+    margin: 0 0.5rem;
+  }

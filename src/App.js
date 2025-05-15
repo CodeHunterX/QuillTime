@@ -6,7 +6,7 @@ import { AuthProvider, useAuth } from './services/AuthContext';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import './constants/colors.css';
-
+import TermsOfService from './pages/TermsOfService';
 /* --- wrapper so we can access context --- */
 const AppShell = () => {
   const { accessToken } = useAuth();
@@ -57,6 +57,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<AppShell />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
       </Routes>
     </Router>
   </AuthProvider>

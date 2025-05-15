@@ -1,0 +1,35 @@
+.privacy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--color-deep-blue);
+    color: var(--color-text-light);
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .privacy-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-soft-purple);
+  }
+  
+  .privacy-container h2 {
+    margin-top: 2rem;
+    color: var(--color-text-light);
+  }
+  
+  .privacy-container a {
+    color: var(--color-text-light);
+    text-decoration: none;
+  }
+  
+  .privacy-container a:hover {
+    text-decoration: underline;
+  }
+  
